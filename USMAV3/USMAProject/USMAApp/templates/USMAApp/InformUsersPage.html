@@ -1,0 +1,94 @@
+
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Email</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+     
+ <style type="text/css">
+   form label {
+     color: white;
+     font-size: 18px;
+     margin-bottom: 15px;
+
+   }
+
+   input{
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    color: white;
+    width: 50%;
+    margin-bottom: 20px;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+   }
+
+
+ </style>
+    
+</head>
+<body style=" background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url({% static 'icon2.png' %});">
+  
+   
+
+
+
+
+
+  
+<div class="container">
+  <h2 style="color: white;font-size: 22px;margin-top: 10px;margin-bottom: 15px;text-align: center;">Send Email</h2>
+  
+<center>
+  {% if messages %}
+ {% for message in messages %}
+  
+<h3 style="color: white;font-size: 16px;margin-top: 10px;margin-bottom: 10px;text-align: center;">
+  {{message}}
+</h3>
+{% endfor %}
+{% endif %}
+
+ <form method="POST" enctype="multipart/form-data">
+
+  {% csrf_token %}
+   
+
+   <label>Title</label><br>
+   {{form.Title}}<br>
+
+   <label>Message</label><br>
+   {{form.media}}
+   {{form.Message}}<br>
+
+
+   <input type="submit" value="Submit" name="" style="color: white;background-color: blue;padding: 10px;border-radius: 8px;margin-bottom: 35px;margin-top: 10px;width: 20%;">
+
+ </form>
+
+
+</center>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+ 
+</body>
+</html>
